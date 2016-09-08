@@ -19,3 +19,20 @@ private
 	end
 ```
 
+* Adding an association:
+```ruby
+belongs_to :user # article.rb
+has_many :articles # user.rb
+```
+  * but the association is not complete...we have to add a user_id column to the article database:
+```shell
+rails g migration add_user_id_to_articles user_id:integer:index
+rails db:migrate
+```
+* In Sublime, use CMD + T to find certain files.  If looking for the articles_controller, just search for "controller"
+
+* So after adding devise, I need to update the articles controller:
+```ruby
+@article = current_user.articles.build # new method
+@article = current_user.articles.build(article_params) # create method
+```
