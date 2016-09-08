@@ -1,2 +1,8 @@
 / index.html.haml
 %h1 Index Placeholder
+
+- @articles.each do |article|
+	= link_to (article.title), article
+	%p= article.content
+
+= link_to "New Article", new_article_path
