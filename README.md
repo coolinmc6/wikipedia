@@ -10,3 +10,12 @@ This is a Pinterest-clone following the tutorial by [Mackenzie Child](https://ma
 
 
 #### CM Comments
+
+```ruby
+private
+
+	def article_params
+		params.require(:article).permit(:title, :content)
+	end
+```
+
