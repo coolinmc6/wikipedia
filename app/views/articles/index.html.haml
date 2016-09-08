@@ -3,6 +3,11 @@
 
 - @articles.each do |article|
 	= link_to (article.title), article
-	%p= article.content
+	%p
+		Published
+		= time_ago_in_words(article.created_at)
+		ago or 
+		= article.created_at.strftime('%b %d, %Y')
+	%p= truncate(article.content, length: 500)
 
 = link_to "New Article", new_article_path
