@@ -65,7 +65,7 @@ category given the category_id...here's one solution:
   * "edit" in the controller doesn't need any code in the method.  The controller will simply need to look for the 'edit' view 
   that I have created (edit.html.haml)
   * "Update" is different and actually needs code but it is VERY similar to the create action:
-'''ruby
+```ruby
 def update
 	if @article.update(article_params) # if checks if update was successful using article_params method
 		redirect_to @article # like 'create', if successful, redirect to the updated article page
