@@ -65,17 +65,28 @@ category given the category_id...here's one solution:
   * "edit" in the controller doesn't need any code in the method.  The controller will simply need to look for the 'edit' view 
   that I have created (edit.html.haml)
   * "Update" is different and actually needs code but it is VERY similar to the create action:
-  '''ruby
-  def update
-		if @article.update(article_params) # if checks if update was successful using article_params method
-			redirect_to @article # like 'create', if successful, redirect to the updated article page
-		else
-			render 'edit' # if NOT, render the edit screen again with the changes the user made
-		end
+'''ruby
+def update
+	if @article.update(article_params) # if checks if update was successful using article_params method
+		redirect_to @article # like 'create', if successful, redirect to the updated article page
+	else
+		render 'edit' # if NOT, render the edit screen again with the changes the user made
 	end
-	```
-
-
+end
+```
+* I had an issue with me trying to delete an item where the confirm showed up multiple times.  I discuss it in this link from
+one of my previous projects [pin_board](https://github.com/coolinmc6/pin_board#2500)
+  * Open the config/environments/development.rb file:
+```ruby
+# the default was true
+config.assets.debug = false
+```
+* To eliminate bullets on unordered lists, do this:
+```css
+ul {
+	list-style: none;
+}
+```
 
 
 
