@@ -1,5 +1,6 @@
 / _form.html.haml
 = simple_form_for @article do |f|
+	= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }
 	= f.input :title
 	
 	= f.input :content

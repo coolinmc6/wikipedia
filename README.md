@@ -36,3 +36,48 @@ rails db:migrate
 @article = current_user.articles.build # new method
 @article = current_user.articles.build(article_params) # create method
 ```
+* Adding category model and then association to Articles:
+```
+rails g model Category name:string
+rails db:migrate
+rails g migration add_category_id_to_articles category_id:integer
+rails db:migrate
+```
+* add necessary to code each of the models (category.rb and article.rb)
+
+* When updating the 'new' template, if we want users to be able to add the appropriate category, then we need to 
+add that to our safe parameters in the articles_controller.rb:
+```ruby
+def article_params
+	params.require(:article).permit(:title, :content, :category_id)
+end
+```
+* Trying to show the category name in the articles show.html.haml file.  I was having trouble getting the name of the 
+category given the category_id...here's one solution:
+```haml
+%h4
+	%strong 
+		Subject: 
+	= Category.find(@article.category_id).name
+%p= @article.content
+```
+* I did the edit and update actions by myself.  So here we go...
+  * "edit" in the controller doesn't need any code in the method.  The controller will simply need to look for the 'edit' view 
+  that I have created (edit.html.haml)
+  * "Update" is different and actually needs code but it is VERY similar to the create action:
+  '''ruby
+  def update
+		if @article.update(article_params) # if checks if update was successful using article_params method
+			redirect_to @article # like 'create', if successful, redirect to the updated article page
+		else
+			render 'edit' # if NOT, render the edit screen again with the changes the user made
+		end
+	end
+	```
+
+
+
+
+
+
+

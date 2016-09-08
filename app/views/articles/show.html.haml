@@ -1,6 +1,12 @@
 / show.html.haml
 %h1= @article.title
+%h4
+	%strong 
+		Subject: 
+	= Category.find(@article.category_id).name
 %p= @article.content
 
 = link_to "Back", root_path
+|
+= link_to "Edit", edit_article_path
 
