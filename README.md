@@ -87,6 +87,11 @@ ul {
 	list-style: none;
 }
 ```
+* This is the first time I've had a problem but I am getting a brief flash of the unstyled page before it loads the Bootstrap
+and other styling.  It is called FOUC or flash of unstyled content and here are some links:
+  * [How to prevent Flash of Unstyled Content on your websites](http://www.techrepublic.com/blog/web-designer/how-to-prevent-flash-of-unstyled-content-on-your-websites/)
+  * I just tried again and it may have been temporary...I'm not having much of a problem now
+  
 
 
 

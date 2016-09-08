@@ -6,8 +6,8 @@
 	= Category.find(@article.category_id).name
 %p= @article.content
 
-= link_to "Back", root_path
-|
-= link_to "Edit", edit_article_path
-|
-= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete the article?" }, class: "btn btn-sm btn-default"
+.btn-group
+	= link_to "Back", root_path, class: "btn btn-default"
+	- if user_signed_in?
+		= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
+		= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

@@ -1,13 +1,20 @@
-!!! 5
+!!!
 %html
 %head
   %title Wikipedia Clone
-  = csrf_meta_tags 
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
 %body
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container
+      = link_to "Wikipedia Clone", root_path, class: "navbar-brand"
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li= link_to "New Article", new_article_path
   %p.notice= notice
   %p.alert= alert
+
   .container
     .row
       .col-md-8
@@ -18,4 +25,3 @@
           - Category.all.each do |category|
             %li= link_to category.name, articles_path(category: category.name), class: "list-group-item"
 
-    
